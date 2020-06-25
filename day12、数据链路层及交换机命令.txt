@@ -1,0 +1,236 @@
+数据链路层（2层 Data Link Layer）
+1.属于2层
+2.传输单元：帧
+3.帧结构:请参见图片
+  帧头：6+6+2=14字节
+  MTU值：1500字节
+  帧尾：4字节
+  
+  帧头内容：目标MAC、源MAC、类型
+  类型的作用：识别上层协议
+  0x0800：上层为IP协议
+  0x0806：上层为ARP协议
+  0x代表16进制
+
+4.工作在数据链路层的设备：交换机/网卡
+
+5.交换机工作原理：
+收到一个数据帧后：
+1.首先学习帧中的源MAC地址来形成MAC地址表
+2.然后检查帧中的目标MAC地址，并匹配MAC地址表：
+   如表中有匹配项，则单播转发
+   如表中无匹配项，则除接受端口外广播转发
+3.MAC地址表的老化时间默认是300秒（可修改）
+
+6.交换机的端口：
+E 10Mb
+F 100Mb
+G 1000Mb
+Te 10000Mb
+
+F0/1
+0模块号
+1接口号
+
+接口速率自适应：1000/100/10M自适应
+速率工作模式可以为10,100,1000任何一种状态
+
+端口状态：up/down
+down的3中可能：
+1）人工down掉
+2）速率不匹配
+3）双工模式不匹配（双工duplex）
+   双工模式：单工、半双工、全双工
+
+7.交换机5大基本工作模式及命令
+第一次配置网络设备，需要使用console线
+在PC需要使用“超级终端”或其他软件。
+
+1）用户模式：
+switch>
+可以查看交换机的基本简单信息，且不能做任何修改配置！
+2）特权模式：
+switch> enable
+switch#
+可以查看所有配置，且不能修改配置
+但可以做测试、保存、初始化等操作
+3）全局配置模式：
+switch# configure terminal
+switch(config)#
+默认不能查看配置！
+可以修改配置，且全局生效！
+4）接口配置模式：
+switch(config)# interface f0/1
+switch(config-if)#
+默认不能查看配置！
+可以修改配置，且对该端口生效！
+5）console口/线/控制台模式：
+默认不能查看配置！
+可以修改配置，且对console口生效！
+
+命令：
+6. exit退出一级
+   end直接退到特权模式
+7. 支持命令缩写
+8. ?的用法
+9. 历史命令
+10.tab补全键
+11.配置主机名：
+conf t
+hostname 设备名
+
+12.设置用户密码：
+line co 0
+password 密码
+login
+exit
+
+12.快捷键：
+ctrl+u ：快速删除光标全所有字符
+ctrl+a ：快速定位光标到行首
+ctrl+e ：快速定位光标到行尾
+
+13.
+在内存中存在一个文件：
+running-config
+第一次开机，系统会在内存中自动
+创建一个新的干净的running-config
+
+14保存配置：
+en
+copy running-config startup-config
+或
+write
+
+15.交换机开机动作：
+先去硬盘中查找startup-config是否存在，
+如果不存在，在内存中创建新的run
+若果存在，则复制到内存中并改名为running-config
+
+16.查看running-config配置
+en
+show running-config
+sh run
+
+17.查看startup-config配置
+show startup-config
+
+18.重启设备：
+en
+reload
+
+19.配置特权密码：
+conf t
+enable password 密码  （明文）
+enable secret 密码   （密文）
+
+20.查看MAC地址表:
+show mac-address-table
+
+21.查看接口状态列表：
+show ip int brief
+sh ip int b
+
+22.手工关闭接口
+int f0/x
+  shutdown
+  exit
+
+23.手工开启接口
+int f0/x
+  no shutdown
+  exit
+
+24.do的用法
+其他模式加do空格可以强制使用特权模式的命令
+如：
+do sh run
+do sh ip int b
+do wr
+等
+
+25.删除配置
+1）在哪配置的，就在哪删！
+2）命令前加no空格
+3）原命令中有参数，并且参数具有唯一性，则
+   删除时不需要加参数
+如:
+conf t
+hostname sw1
+
+conf t
+no hostname
+
+26.清空/擦除/初始化配置
+en
+erase startup-config
+
+
+小练习：
+1.开启一台交换机
+2.配置主机名为sw01-01
+3.配置用户密码为123.com
+4.配置特权密码为456.com
+5.通过show命令验证以上配置是否配置成功！
+6.重启验证配置是否存在
+7.重新做2-4步骤
+8.保存配置，并重启，验证是否保存成功
+9.连接2台PC，并观察MAC地址表是否形成。
+
+27.为3层端口配置IP：
+int f0/0
+  ip add 10.1.1.254 255.255.255.0
+  no shut
+  exit
+
+28.开启远程控制：
+conf t
+line vty 0 4
+  transport input telnet/ssh/none/all
+  password  密码
+  login
+  exit
+
+conf t
+hostname r1
+ip domain-name r1.qf.com
+crypto key generate rsa  生成密钥对！
+line vty 0 4
+  transport input telnet/ssh/none/all
+  login local
+  exit
+username xx password 123.com
+
+练习：
+1.成功实现在pc上telnet或ssh远程连接到路由器上，其中只做login验证
+2.成功实现在pc上telnet或ssh远程连接到路由器上，其中要求做login local验证
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
