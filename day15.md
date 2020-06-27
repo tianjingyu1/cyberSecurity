@@ -41,3 +41,12 @@ conf t
      switchport access vlan ID
      exit
 默认VLAN 1 1002-1005 5个
+
+二、trunk（中继端口）
+1. trunk/中继链路/公共链路
+作用：允许所有VLAN通过trunk链路
+方法：通过在数据帧上加标签，来区分不同VLAN的数据
+
+2. trunk标签：
+ 1）ISL标签：cisco私有的，标签大小30字节26+4
+ 2）802.1q标签：公有协议，所有厂家都支持，标签大小4字节。属于内部标签。
