@@ -1,0 +1,64 @@
+5.一个VLAN=一个广播域=一个网段
+  VLAN是二层技术
+
+7.静态VLAN命令：
+1）创建VLAN：
+conf t
+  vlan ID,ID,ID-ID
+    [name  自定义名称]
+    exit
+
+2）查看VLAN表：
+  show vlan b
+
+3）将端口加入到VLAN：
+  int  f0/x
+    switchport  access  vlan  ID
+    exit
+
+
+
+
+二、trunk
+1.trunk/中继链路/公共链路
+作用：允许所有VLAN数据通过trunk链路
+方法：通过在数据帧上加标签，来区分不同的vlan的数据
+
+2.trunk标签：
+1）ISL标签：cisco私有的，标签大小30字节26+4
+2）802.1q标签：公有协议，所有厂家都支持，标签大小4字节。属于内部标签。
+
+3.交换机端口链路类型：
+1）接入端口：也称为access端口，一般用于连接pc，只能属于某1个vlan,也只能传输1个vlan的数据
+2）中继端口：也称为trunk端口,一般用于连接其他交换机，属于公共端口，允许所有vlan的数据通过！
+
+4.配置trunk命令：
+  int f0/x
+    [switchport trunk encapsulation dot1q/isl]
+    switchport mode trunk
+    exit
+
+四：交换机的工作原理（配置了vlan和trunk后）：
+分析：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
