@@ -1,4 +1,5 @@
 # VLAN(Virtual LAN 虚拟局域网)
+二层技术
 
 1.广播/广播域
 
@@ -50,3 +51,14 @@ conf t
 2. trunk标签：
  1）ISL标签：cisco私有的，标签大小30字节26+4
  2）802.1q标签：公有协议，所有厂家都支持，标签大小4字节。属于内部标签。
+
+3. 交换机端口链路类型：
+ 1）接入端口：也称为access端口，一般用于连接pc，只能属于某1个vlan，也只能传输1个vlan的数据
+ 2）中继端口：也称为trunk端口，一般用于连接其他交换机，属于公共端口，允许所有vlan的数据通过
+
+4. 配置trunk命令：
+  int f0/x
+    [switchport trunk encapsulation dot1q/isl]
+    switchport mode trunk
+    exit
+
