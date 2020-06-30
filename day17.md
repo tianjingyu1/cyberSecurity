@@ -11,7 +11,7 @@ int vlan 20
 
 主板带宽
 
-三层交换机：
+## 三层交换机：
 1.三层交换机 = 三层路由+二层交换机
 2.三层路由引擎是可以关闭或开启的
  conf t
@@ -39,3 +39,18 @@ int vlan 10
     no switchport
     ip add ...
     exit
+
+VTP(vlan trunking protocol) vlan中继协议，虚拟局域网干道协议
+
+## 三层交换机内外网实验步骤:
+
+一、交换部分
+1) Trunk
+2) VTP
+3) 创建vlan
+4) 分配端口到vlan
+5) 起三层虚接口
+
+二、路由部分
+1) 配置IP,并开启
+2) 配置路由
