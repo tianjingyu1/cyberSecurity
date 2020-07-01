@@ -92,3 +92,7 @@ show standby br
 show standby
 
 win+shift+s 截图
+
+# pvst(思科私有) MST
+
+每个vlan都有一个生成树
