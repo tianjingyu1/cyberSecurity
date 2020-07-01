@@ -69,6 +69,26 @@ VTP(vlan trunking protocol) vlan中继协议，虚拟局域网干道协议
   默认为100
 5.HSRP组成员通过定时发送hello包来交流，默认每隔3秒
   hello时间3秒，坚持时间10秒
-6.占先权
+6.占先权preempt
   作用：当检测不到对方或检测到对方优先级比自己低，立即抢占活跃路由的名分
 7.配置跟踪track,跟踪外网端口状态，当外网down掉，则自降优先级
+
+R1
+int f0/0
+  standby 1 ip 192.168.1.254
+  standby 1 priority 200
+  standby 1 preempt
+  standby 1 track f0/1
+  exit
+R2
+  standby 1 ip 192.168.1.254
+  standby 1 priority 195
+  standby 1 preempt
+  standby 1 track f0/1
+  exit
+
+查看hsrp状态
+show standby br
+show standby
+
+win+shift+s 截图
