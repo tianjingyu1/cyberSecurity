@@ -78,7 +78,7 @@ acc 100 permit ip any any
      conf t
      no  access-list  表号
 
-9.命名ACL：
+9. 命名ACL：
   作用：可以对标准或扩展ACL进行自定义命名
   优点：自定义命名更容易辨认，也便于记忆！
             可以任意修改某一条，或删除某一条，也可以往中间插入某一条
@@ -98,4 +98,3 @@ ip  access-list  standard/extended   自定义表名
 ip  access-list  standard/extended   自定义表名
       条目ID   动作   条件
       exit
-
