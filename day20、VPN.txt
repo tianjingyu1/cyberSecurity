@@ -36,6 +36,7 @@ day20--VPN
 	一般公司部署VPN服务器，员工在外拨号连接VPN即可！
 	常见RA-VPN协议：PPTP VPN、L2TP VPN、SSTP VPN
 			EZvpn/easyvpn、SSL VPN
+中国红防火墙
   2）点到点VPN
 	一般用在企业对企业安全连接！
 	一般需要在两个企业总出口设备之间建立VPN通道！
