@@ -1,0 +1,202 @@
+﻿HTML概述
+
+         F12    开发者工具
+         前台调试工具    前台html代码和js代码  
+            1、查看器：查看HTML代码 
+            2、控制台：调试JS代码    JavaScript
+            3、网络：查看B/S架构中  请求头和响应头内的内容
+
+1、什么是HTML
+    HTML 指的是超文本标记语言 (Hyper Text Markup Language)
+    HTML 不是一种编程语言，而是一种标记语言 (markup language)
+    标记语言是一套标记标签 (markup tag)
+    HTML 使用标记标签来描述网页
+2、基础语法：
+	1、标记语法
+	2、元素
+	3、元素嵌套
+	4、属性  和 值
+	5、注释         
+HTML文档结构
+1、结构标记
+
+    <html> 与 </html> 之间的文本描述网页
+    <body> 与 </body> 之间的文本是可见的页面内容
+    <h1> 与 </h1> 之间的文本被显示为标题
+    <p> 与 </p> 之间的文本被显示为段落
+
+    盗链
+    目的：节约自己本身服务器资源开销    
+    形式：使用链接属性的属性值  加入 连接URL地址
+    img src=“盗链的URL地址”
+    变形：将盗链的地址 挂马
+
+    <!DOCTYPE HTML>
+    <html>
+        <head>
+            <title>第一个 HTML 文档</title>
+            <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+            <meta name="keywords" content="HTML,CSS,JS" />
+        </head>
+        <body>
+            <p title="标准结构的HTML文档">我的第一个文档</p>
+        </body>
+    </html>
+
+    了解内容：
+	1、行内元素和块级元素的区别
+	块级元素的前后都会自动换行，如同存在换行符一样。默认情况下，块级元素会独占一行。例如，<p>、<hn>、<div> 都是块级元素。在显示这些元素中间的文本时，都将从新行中开始显示，其后的内容也将在新行中显示。
+	行内元素可以和其他行内元素位于同一行，在浏览器中显示时不会换行。例如，<a>、<span> 等。
+	我们可以这样理解：如果元素是块级的，则总是在新行上显示，好比是书中的一个新段落；而元素如果是行内的，那么只能在当前行中显示，就像是段落中的一个单词。
+	因此，块级元素常用来构建网页上比较大的结构，用于包含其他块级元素、行内元素和文本；而行内元素一般只能包含其他行内元素和文本。
+	2、常用的文本标记有：
+
+    文本样式标记：如 <b>、<i>、<u>、<s>、<sup>、<sub>等，这些元素用来指 定文本的外观，分别为：粗体、斜体、下划线、删除线、上标和下标。一般不太建议使用这些元素来定制文档的外观，而建议使用CSS样式来实现外观的定义。
+    标题元素<hn>：标题元素让文字以醒目的方式显示，往往用于文章的标题，有6级标题，<h1>、<h2>、<h3>、<h4>、<h5>和 <h6>。
+    段落元素<p>：用于表示一段文本，自成一个段落。
+    换行元素<br>：当使用 <br> 元素时，它后面跟随的内容将从下一行开始显示。
+    分区元素<span>和<div>：分区元素用于为元素分组，常用于页面布局。
+    分隔线元素 <hr>：<hr> 元素用于在页面上创建一条水平线，常用于将页面的不同部分隔开。
+    预格式化<pre>：保留源文档中的格式，即保留原来的换行和文本中的空白
+
+
+    重点内容，需要背过！！！
+2、表单
+	1/作用：用于收集、显示用户的信息并提交给服务器
+	2/表单组成：
+	表单元素：
+		1、语法：
+		<form></form>  不能省略
+		2、属性
+			1、action  服务器处理程序地址
+			2、method  提交方式 
+				1、get默认值，显示提交，长度限制2KB（IE）。向服务器索取数据
+				2、post ，安全隐式提交，无长度限制。一般准备数据提交后服务器处理再交付
+			3、enctype  什么样的数据可以被提交
+				1、application/x-www-form-urlencoded   默认值  特殊字符等都可以被提交
+				2、multipart/form-data     上传文件时使用
+				3、text/plain     只能将普通的数据提交（有些少数框架中，可能会使用）
+				4、name   定义整个表单的名称（不是必要）
+	表单控件：
+		1、input  组-输入字段
+			1、语法：<input></input>
+			2、属性：type 区分不同的输入字段  如果不写或写，那么都将是text
+					 name 当前控件的名称，服务器用，（不能省略）命名规范：匈牙利命名法：由缩写+功能组合
+					 value 控件的值，服务器用
+					 disabled  禁用控件
+			3、所有控件：
+				1、文本框和密码框
+					文本框：type="text"
+					密码框：type="password"
+					属性：  1、maxlength限制输入的字符数
+							2、readonly  只读
+				2、单选按钮和复选框
+					单选：type="radio"
+					复选：type="checkbox"
+					属性：1、name分组    单选：一组中只能有一个被选中
+										复选：以相同的名称来获取一组勾选的数据
+						  2、checked：预选中
+				3、按钮组
+					提交：type="submit"
+					重置：type="reset"
+					普通：type="button"
+					按钮：<button>文本</button>  放在form里就是提交，放在外面就是按钮。
+					属性：
+						value  
+				4、隐藏域和文件选择框
+					隐藏域：type="hidden"
+					文件选择：type="file"
+					文件选择框: 1、methpd 必须为post   2、enctype必须为multipart…………
+		2、textarea
+			多行文本域
+			1、语法
+				<textarea></textarea>
+			2、属性
+				1、name 名称
+				2、cols 文本区域的列数，变相的设置宽度
+				3、rows 文本区域的行数，变相的设置高度
+				4、readonly
+		3、select 和 option  选项框
+			下拉选项框
+			滚动列表
+			1、语法<select></select>
+			       属性：1、name   名称   2、size  默认显示几项，如果大于1的话则为滚动列表
+			       3、multiple 多选
+
+					<option></option>
+					属性：1、value 选项的值
+					      2、selected 预选中
+		4、其他元素
+			1、分组
+			<fieldset>
+				<legend>标题</legend>
+				内容
+			</fieldset>
+			2、关联表单控件
+				语法<label>文本</label>
+				属性for：要关联的表单控件ID
+	3、其他常用标记
+	    1、浮动框架：作用：再一个浏览器页面中显示多个html文档内容
+	    			语法<iframe src="">文本</iframe>
+	    			属性：src引入浮动框架的url   width    height   frameborder设置为0则不表示边框
+	    2、摘要与细节<details>
+	    				<summary></summary>
+	    			 </details>
+	    3、度量元素
+	    			<meter>文本</meter>
+	    			属性
+	    			1、min度量范围的最小值，默认为0
+	    			2、max 最大值  默认为1
+	    			3、value 当前显示的值
+	    4、时间元素 
+	    	<time>文本</time>   关联时间的不同表示方式
+	    	属性：datetime 关联的日期与时间，日期与时间用T分割
+	    5、高亮显示 <mark></mark>
+
+
+CSS
+1、CSS概述
+	1、问题
+		1、相同的效果用不同的属性
+		<body text="blue"></body> <font color="red"></font>
+		2、可维护性和可重用性不高
+	2、CSS
+		1、什么是CSS
+			Cascading Style Sheets层叠样式表、级联样式表、样式表
+		2、作用1、实现内容与样式相分离2、提高代码的可重用性和可维护性
+		3、CSS与HTML之间的关系
+			HTML：人 搭建网页结构      CSS：衣服装扮  构建网页样子 
+		4、CSS与html的使用原则：尽量使用CSS属性  取代html属性
+				能取代 html：align    CSS：text-align     color
+				不能取代   colspan   rowspan
+
+	3、使用CSS样式表
+		1、使用样式表方式
+			1、内联方式：将样式定在元素的style属性中。
+				语法：<标记 sytle="样式声明；样式声明"></标记>
+				样式声明：样式属性：样式值
+				ex：  color：red；当前元素文本为红色
+				      background-color：blue   背景颜色蓝色   font-size:20字体大小
+			2、内部样式表    有多种样式，可以重用
+			    1、将样式定义在head元素中的style元素中
+			    2、语法
+			    	<header>
+			    		<style type="text/css">
+							若干“样式规则”
+			    		</style>
+			    	</header>
+			    	样式规则组成：
+			    		1、选择器：规定了页面中，哪些元素能够使用定义好的样式。
+			    		2、若干样式声明：样式属性：值；  选择器｛
+																	样式属性：值；
+																	样式属性：值；			    											
+			    												｝
+			3、外部样式表
+				1、作用：将样式声明在独立的样式文件中（**.css），并且独立于任何HTML文档。
+				2、步骤：
+					1、创建CSS文件并且声明样式规则
+					2、在页面中对CSS文件进行引入<header><link rel="stylesheet"关系 type="text/css" href="CSS样式表文件url"></header>
+		2、CSS样式表特征
+			1、继承性：大部分的css样式属性是可以被继承
+			2、层叠性（级联性）：可以为一个元素定义多个样式规则，样式属性不冲突时，可以将多个样式规则中的属性层叠为一个
+			3、优先级：样式属性定义冲突时，按照不同样式表或样式规则的优先级来应用样式
