@@ -128,6 +128,8 @@ show  crypto  ipsec  transform-set   查看第二阶段的传输模式
 VPN服务器需要对VPN客户端进行身份验证
 VPN服务器需要给VPN客户端下发权限及IP地址
 
+route print //win pc上路由
+
 
 
 
