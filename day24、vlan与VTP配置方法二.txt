@@ -1,0 +1,33 @@
+conf t
+  vlan 10
+    exit
+  vlan 20
+    exit
+show vlan b
+
+en
+vlan da
+   vlan 10 [name  it]
+   vlan 20
+   vlan 30
+   exit
+show vlan-s b
+
+
+VTP:
+conf  t
+  vtp  domain  wencoll
+
+en
+vlan da
+  vtp domain wencoll
+  exit
+
+
+
+
+
+
+
+
+
