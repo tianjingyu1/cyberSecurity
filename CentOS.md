@@ -261,3 +261,19 @@ xiyangyang : x : 500 : 500 : : /home/xiyangyang : /bin/bash
 字段8：用户的失效时间
 
 /etc/group 记录了系统中所有组信息
+
+## 建立和调整用户属性
+
+groupmod 对组进行修改
+groupadd 创建组 -g 指定配置
+useradd -g 指定基本组
+useradd -G 指定附加组
+usermod -u 修改uid
+建立什么修改什么什么放最后
+useradd -u 250 -M -s /sbin/nologin testuser -M 不要家目录 -s 指定不让登录
+passwd 用户 超级管理员给用户设置密码
+chage -M 时间 用户 修改密码最长有效期
+passwd -l 用户 锁定用户
+passwd -u 用户 解锁用户
+userdel -r 删除用户连同家目录
+groupdel 删除组
