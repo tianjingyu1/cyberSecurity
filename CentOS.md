@@ -163,3 +163,27 @@ dd 删除当前行
 gg 回到第一行
 G 到最后一行
 50G 快速跳转到第50行
+
+## linux下软件分类
+
+源码包 封装后的软件包
+
+源码包：GNU社区 github
+特点：
+1. 以压缩包的形式提供给用户
+2. 开源
+
+安装的注意事项
+以httpd为例
+1. 解包
+2. 进入解压路径了解软件的作用以及安装方法
+  $ ./configure --prefix=PREFIX
+  $ make
+  $ make install
+  $ PREFIX/bin/apachectl start
+3. 通过配置脚本指定安装路径和功能，并且生成makefile编译脚本文件
+./configure --prefix=/usr/local/webserver
+4. 通过make命令控制makefile文件进行顺序编译
+5. 将编译好的文件拷贝到安装路径下
+
+编译 可以指定安装的路径和编译所需要的功能
