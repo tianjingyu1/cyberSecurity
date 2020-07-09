@@ -119,3 +119,29 @@ man ls
 外部命令 安装的第三方软件带的命令字 基本都有帮助手册
 
 help 命令字
+
+## 压缩与解压缩
+
+dd if=/dev/zero of=/tmp/bigfile bs=1M count=100
+if inputfile输入文件
+of outputfile 输出文件
+bs 单位
+count 计数器
+
+gzip 文件名称 --压缩文件
+gunzip 压缩包 --解压缩
+
+bzip2 文件名称 --压缩
+bunzip2 压缩包 --解压缩
+
+du -sh 目录 --查看目录大小
+
+如何对目录进行打包压缩
+
+将目录转化为文件
+tar -jcf /tmp/allfile.tar /tmp/allfile
+create
+tar -jxf /tmp/allfile.tar -C /root
+-x 解包 -C 指定解压路径
+-z gzip
+-j bzip
