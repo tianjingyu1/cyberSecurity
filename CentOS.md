@@ -213,3 +213,21 @@ rpm -ivh tree-1.5.3-3.el6.x86_64.rpm
 6. 软件卸载
 rpm -e tree
 
+卸载vim编辑器工具
+1. 该软件的名称
+rpm -qa|grep "vim"
+2. 卸载(依赖关系)
+rpm -e vim-enhanced
+rpm -e vim-common
+3. 安装
+rpm -ivh vim-common-7.4.629-5.el6_8.1.x86_64.rpm
+rpm -ivh vim-enhanced-7.4.629-5.el6_8.1.x86_64.rpm
+
+根据光盘中的依赖关系列表进行软件安装卸载（yum源安装）
+1. 要告诉操作系统依赖关系列表的位置
+vim /etc/yum.repos.d/dvd.repo
+[dvdrom] 标签
+name="yum dvd rom" 描述
+baseurl=file:/media/CentOS_6.9_Final
+gpgvheck=0 是否做密钥对
+2. 通过yum工具进行软件的卸载与安装
