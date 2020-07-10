@@ -418,3 +418,21 @@ index.html
 4. 主配置文件分析
 share 
 
+## 访问控制设定
+
+1. 仅允许192.168。1.2主机访问主页
+Order allow,deny 白名单
+  Allow from 192.168.1.网段
+Order deny,allow 黑名单
+  Deny from 192.168.1.2
+
+2. 对页面进行加密，先输入用户名再输入密码才可以进入
+用户名 密码 自己配置
+htpasswd -c /etc/httpd/conf/httpuser tom
+
+yum install mysql-server -y 下载安装mysql
+下载php
+
+index.php
+
+phpinfo()
