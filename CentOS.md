@@ -379,3 +379,10 @@ ONBOOT=yes 是否允许network服务管理该文件
 BOOTPROTO=static 静态获取
 IPADDR=192.168.1.254
 NETMASK=255.255.255.0
+GATEWAY=xxxxx
+DNS1=
+DNS2=
+
+service network restart
+
+关闭防火墙 setup
