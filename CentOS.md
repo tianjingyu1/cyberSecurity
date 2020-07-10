@@ -327,3 +327,23 @@ chmod u+s
 撤销 chmod o-t g-s u-s
 
 查询权限 find 路径 -perm 4755（4：suid 2:sgid 1:粘滞位）
+
+1. 不再允许添加新用户的请求
+/etc/group
+/etc/passwd
+/etc/shadow
+/home/xxxx
+chattr +i
+
+2. rwxr-xr-x 755
+目录的最高权限0777-0022=0755
+文件666-022=644
+027
+
+/etc/profile
+/etc/bashrc
+umask
+
+/etc/login.defs
+设置最长有效期
+
