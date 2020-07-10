@@ -436,3 +436,49 @@ yum install mysql-server -y 下载安装mysql
 index.php
 
 phpinfo()
+
+## lnmp
+n:nginx web 支持庞大的并发访问
+linux Nginx MySQL PHP/Perl/Python
+继apache之后的另一款linux下被大量使用的web服务软件
+Nginx的优势在于，稳定性和低系统资源损耗，并发连接的高处理能力
+一台物理服务器可处理30000-50000个并发请求
+
+nginx安装
+编译安装之前确保已存在开发环境软件包
+-yum -y install pcre-devel zlib-devel
+创建运行用户和组
+-useradd -M -s /sbin/nologin nginx
+编译安装
+-tar zxf nginx-1.6.0.tar.gz
+-./configure ==prefix=/usr/local/nginx --user=nginx --group=nginx
+- make && make install
+
+/usr/local/nginx/conf/nginx.conf 该文件包括三大部分
+- 全局配置、I/O事件、HTTP配置
+全局配置
+- #user nobody;运行用户如果未指定
+- worker_processes 1;工作进程数（根据cpu核心数设定）
+- #error_log logs/error.log; 错误日志的文件位置
+- #pid logs/nginx.pid; pid文件位置
+I/O事件配置
+- events{
+     use epoll; 使用模型类型
+     worker_connections 4096; 每个进程处理4096连续
+}
+
+安装php解析环境
+- tar xf php-5.3.28
+- yum install -y libxml2-devel libjpeg-devel libpng-devel
+- ./configure --prefix=/usr/local/php5 --with-gd --with-zlib --with-config-file-path=/usr/local/php5 --enable-mbstring --enable-fpm --with-jpeg-dir=/usr/lib && make && make install
+  
+--enable-fpm FastCGI 进程管理器用来对php解析实例进行管理优化解析效率
+
+建立配置文件以及命令路径优化
+- yum remove php-cli
+- cp php.ini-development /usr/local/php5/php.ini
+- vim php.ini
+  short_open_tag=On 修改文件内短标记功能为On
+- In -s /usr/local/php5/bin/* /usr/bin/
+- In -s /usr/local/php5/sbin/* /usr/sbin/
+
