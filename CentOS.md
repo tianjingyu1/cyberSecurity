@@ -504,3 +504,55 @@ server{
 }
 
 killall 进程  关闭进程
+
+## java web框架
+jsp tomcat 
+nginx 负载均衡
+java -version
+
+安装tomcat
+- tar xf apache-tomcat-7.0.54.tar.gz
+- mv apache-tomcat-7.0.54 /usr/local/tomcat7
+
+启动tomcat
+- /usr/local/tomcat7/bin/startup.sh
+
+验证
+- ss -antpl|grep 8080
+
+关闭tomcat
+- /usr/local/tomcat7/bin/shutdown.sh
+
+### tomcat目录介绍
+
+cd /usr/local/tomcat7/
+- bin   存放启动或关闭tomcat的脚本
+- conf  存放tomcat全局配置文件
+- lib   存放tomcat需要的库文件
+- logs  存放日志文件
+- webapps  主页存放目录
+  /usr/local/tomcat7/webapps/POOT 默认主页存放目录
+- work  jsp编译后产生的class文件
+
+### Nginx+Tomcat负载均衡集群
+安装Nginx反向代理两个Tomcat站点实现负载均衡
+- ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx --with-file-aio --with-http_stub_status_module --with-http_gzip_static_module --with-http_flv_module --with-http_ssl_module
+- user,group 指定用户和组
+- with-http_stub_status_module  启用状态统计
+- with-http_gzip_static_module  启用gzip静态压缩
+- with-http_flv_module  启用flv模块
+- with-http_ssl_module  启用SSL模块
+
+配置Nginx
+- vim /usr/local/nginx/conf/nginx.conf
+- 在http{...}区域中加入
+- upstream tomcat_server{
+     server 172.16.0.100:8080 weight=1;
+     server 172.16.0.200:8080 weight=1;
+}
+weight为权重值设定为相同来演示实验效果
+在location/{...}区域中加入
+proxy_pass http://tomcat_server;
+启动Nginx验证
+注意在两个tomcat上使用不同的主页通过刷新浏览器来观察主页变化
+
