@@ -467,7 +467,7 @@ I/O事件配置
      worker_connections 4096; 每个进程处理4096连续
 }
 
-安装php解析环境
+## 安装php解析环境
 - tar xf php-5.3.28
 - yum install -y libxml2-devel libjpeg-devel libpng-devel
 - ./configure --prefix=/usr/local/php5 --with-gd --with-zlib --with-config-file-path=/usr/local/php5 --enable-mbstring --enable-fpm --with-jpeg-dir=/usr/lib && make && make install
@@ -482,3 +482,25 @@ I/O事件配置
 - In -s /usr/local/php5/bin/* /usr/bin/
 - In -s /usr/local/php5/sbin/* /usr/sbin/
 
+启动php-fpm进程
+- cd /usr/local/php5/etc/
+- cp php-fpm.conf.default php-fpm.conf 建立启动配置文件
+- php-fpm
+查看启动状态
+- ss -antpl|grep 9000 默认监听端口为9000
+停止fpm进程
+- killall -s QUIT php-fpm
+
+修改nginx配置文件使其调用php-fpm进程
+vim /usr/local/nginx/conf/nginx.conf
+server{
+     ...
+     location ~\.php${
+          root /usr/local/nginx/html;  #网页根目录
+          fastcgi_pass 127.0.0.1:9000;  #php-fpm的监听地址
+          fastcgi_index  index.php;   #php首页文件
+          include   fastcgi.conf;  #调用fastcgi配置文件
+     }
+}
+
+killall 进程  关闭进程
