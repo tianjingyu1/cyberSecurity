@@ -369,3 +369,13 @@ ip route add default via 192.168.86.1 dev eth0
 nslookup 
 vim /etc/resolv.conf
 nameserver 202.106.0.20  或114.114.114.114
+
+通过配置文件配置网络地址（永久生效）
+/etc/sysconfig/network-script
+vim ifcfg-eth0
+DEVICE=eth0 网卡设备
+TYPE=Ethernet 类型
+ONBOOT=yes 是否允许network服务管理该文件
+BOOTPROTO=static 静态获取
+IPADDR=192.168.1.254
+NETMASK=255.255.255.0
