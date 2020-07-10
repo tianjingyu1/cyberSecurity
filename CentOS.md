@@ -672,3 +672,27 @@ eg: if [3 -lt 5]
     fi
     
 缩进无要求
+
+### 循环语句
+for while
+for根据取值列表循环
+while根据条件进行循环
+
+for 变量 in 取值列表
+do
+  子语句
+done
+
+while 条件
+do
+  子语句
+done
+
+eg:
+  NUM=0
+  while [ $NUM -lt 3 ]
+  do
+    let NUM-NUM+1
+    echo $NUM
+  done
+
