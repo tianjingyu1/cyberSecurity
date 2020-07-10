@@ -696,3 +696,27 @@ eg:
     echo $NUM
   done
 
+case语句
+
+case $i(变量) in
+redhat)
+  echo "centos"
+  ;;
+centos)
+  echo "redhat"
+  ;;
+*)
+  echo "Useage $0 {readhat|centos}"
+esac
+
+函数 将一部分代码存储到一个变量中
+
+eg:
+redhat(){
+     echo centos
+     return 0
+}
+centos(){
+     echo redhat
+     return 0
+}
