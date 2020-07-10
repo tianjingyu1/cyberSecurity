@@ -399,3 +399,22 @@ service network restart
 
 ## 日志的异地备份
 
+## web服务
+
+lamp平台
+linux apache mysql php
+发帖留言 提交 php把发言提交 数据库中
+php 登录数据调用所有的留言，将留言生成html语句，显示到主页上
+
+对外服务
+ip地址 端口号 80 443
+1. 启动服务
+service httpd start
+2. 验证
+ss -antpl|grep 80
+3. 主页建立
+/var/www/html
+index.html
+4. 主配置文件分析
+share 
+
