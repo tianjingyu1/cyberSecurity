@@ -386,3 +386,13 @@ DNS2=
 service network restart
 
 关闭防火墙 setup
+
+## 日志文件
+/var/log
+日志分类
+  系统日志messages
+  登录日志secure
+  程序日志
+
+日志的管理服务
+/etc/rsyslog.conf
