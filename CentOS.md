@@ -396,3 +396,6 @@ service network restart
 
 日志的管理服务
 /etc/rsyslog.conf
+
+## 日志的异地备份
+
