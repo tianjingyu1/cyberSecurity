@@ -556,3 +556,22 @@ proxy_pass http://tomcat_server;
 启动Nginx验证
 注意在两个tomcat上使用不同的主页通过刷新浏览器来观察主页变化
 
+## 包过滤防火墙
+
+iptables 工具
+4个功能（表）
+raw
+mangle
+nat  网络地址转换
+filter  过滤
+
+iptables -t 表名  查看表
+-nvL
+
+每个表都有专门写规则的地方（链）
+INPUT  源地址 目标地址 协议tcp 目标端口80
+FORWARD 转发规则链（当源地址以及目标地址）
+OUTPUT  出站链
+
+### iptables的基本语法
+
