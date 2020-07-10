@@ -347,3 +347,25 @@ umask
 /etc/login.defs
 设置最长有效期
 
+## 网络地址配置
+
+IP地址 子网掩码 网关 dns
+
+1. 确认系统的网卡信息和ip地址
+ip addr
+ethernet 0 表示第一个网卡 1表示第二个网卡
+lo 本地回环地址
+eth0 MAC0
+eth1 MAC1
+
+2. 关闭networkmanager服务
+service NetworkManager stop 关闭网络管理
+chkconfig --level 345 NetworkManager off 在345级别不启用
+
+3. 配置网络地址
+ip link set eth0 up
+ip addr add 192.168.0.100/24 dev eth0
+ip route add default via 192.168.86.1 dev eth0
+nslookup 
+vim /etc/resolv.conf
+nameserver 202.106.0.20  或114.114.114.114
