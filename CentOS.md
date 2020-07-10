@@ -641,3 +641,11 @@ iptables-save 工具
 导入
 iptables restore < 文件
 
+## nat表 网络地址转换
+
+# 脚本编写
+
+## 规则变量与定义
+
+什么是脚本？作用
+
