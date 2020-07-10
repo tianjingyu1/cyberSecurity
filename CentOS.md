@@ -648,4 +648,27 @@ iptables restore < 文件
 ## 规则变量与定义
 
 什么是脚本？作用
+.sh
+#!/bin/bash
+命令行指令
 
+方便使用
+
+变量赋值：
+变量$
+read -p "please input ipaddr:" IP
+给变量IP赋值
+
+### 判断语句
+
+if 条件
+then 成立子语句
+eg: if [3 -lt 5]
+        then echo "yes"
+    elif
+        then echo "no1"
+    else
+        echo "no"
+    fi
+    
+缩进无要求
