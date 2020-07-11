@@ -52,3 +52,16 @@ elif
 
 int(num) 转换类型
 
+# 变量
+
+变量 = 赋值
+一次赋值 多次使用
+变量名称定义：
+1. 不能以数字开头
+2. 变量名称中不能有特殊符号（_下划线除外）
+3. 变量名称区分大小写
+4. 关键字不能作为变量名称使用
+keyword kwlist 可以查看关键字
+5. 内建函数不要作为变量名称使用
+查看python官方手册
+下载自带 C:\Users\Diversifolious\AppData\Local\Programs\Python\Python36\Doc
