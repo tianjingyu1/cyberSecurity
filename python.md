@@ -65,3 +65,11 @@ keyword kwlist 可以查看关键字
 5. 内建函数不要作为变量名称使用
 查看python官方手册
 下载自带 C:\Users\Diversifolious\AppData\Local\Programs\Python\Python36\Doc
+
+# 字符串赋值
+
+字符串中所包含的索引值
+str = "python"
+astr[0:1]  # 变量[脚标的起始位置：脚标的结束位置]显示结束位置之前的内容才会被显示
+astr[-3]
+
