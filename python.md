@@ -112,4 +112,8 @@ for 循环
 
 根据变量赋值的次数进行循环
 
-for i 
+for i in items:
+    子语句
+
+range()
+
