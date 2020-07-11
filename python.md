@@ -117,3 +117,9 @@ for i in items:
 
 range()
 
+# 文件对象
+
+python读取和写入文件内容
+.open
+.close
+
