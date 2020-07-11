@@ -21,3 +21,13 @@ life is short I use python 人生苦短我用python
 
 python中如何获取函数的帮助信息
 换行功能实际上是print函数自带的
++ 拼接
+
+# python 输入
+
+复变量
+
+input()函数实现输入
+
+python2 输入 使用 raw_input()/input()
+
