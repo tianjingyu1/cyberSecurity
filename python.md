@@ -93,3 +93,11 @@ astr[-3]
 列表
 
 字典
+
+# 循环语句
+
+random 随机数
+random.randint(1,100)
+
+while 条件：
+    子语句
