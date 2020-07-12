@@ -158,3 +158,15 @@ try:
 except (异常类型，类型2,...)
     pass/处理
 
+# 面向对象编程
+
+面向过程(顺序)
+
+OOP object oriented programming
+
+类 对象
+
+类的命名规则 驼峰式命名法PrintStar
+
+属性 方法
+
