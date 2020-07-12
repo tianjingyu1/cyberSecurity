@@ -123,3 +123,20 @@ python读取和写入文件内容
 .open
 .close
 
+打开文件
+写入文件内容
+保存文件
+
+eg:
+f = open("c:\\users\\diversifolious\\testone.txt","wb")
+f = writelines([b"one\r\n",b"two\r\n",b"three\r\n"])
+f = close()
+b:读取按2进制读
+
+实现文件内容的复制
+读出文件内容，写入到另一文件中
+
+通过文件对象cmd.exe对命令行工具进行复制
+避免文件读取量大，可设置一次读取量 data = sf.read(4096)
+通过while循环进行配合
+
