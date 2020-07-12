@@ -180,6 +180,7 @@ class GetHtml(object):
     def __init__(self.URL,HEAD):
         self.url = URL
         self.head = HEAD
+
     def get_index(self):
         self.response = urllib.request.urlopen(self.url)
         self.request.add_header("user-agent",self.head)
@@ -220,3 +221,40 @@ re.findall("匹配","字符串")
 $ 号 匹配是否以某个字符串结尾
 () 号 与\数字搭配 分组保存
 
+# 图片获取
+
+```
+import urllib.request
+import re
+
+class GetHtml(object):
+    def __init__(self.URL,HEAD):
+        self.url = URL
+        self.head = HEAD
+
+    def get_index(self):
+        self.response = urllib.request.urlopen(self.url)
+        self.request.add_header("user-agent",self.head)
+        self.response = urllib.request.urlopen(self.request)
+        return self.response.read()
+
+    def get_list(self):
+        self.strimglist = []
+        self.imglist = re.findall(b"style/\w(60).jpg",self.get_index())
+        #print(self.imglist)
+        for i in self.imglist:
+            self.strimglist.append(self.url+str(i,encode="utf8"))
+        #print(self.strimglist)
+        return self.strimglist
+
+    def get_image(self):
+        num = 0
+        for self.url in self.get_list():
+            num += 1
+            with open(str(num)+".jpg","wb") as f:
+                f.write(self.get_index())
+
+html = GetHtml("html://10.10.10.209","Mozila/5.0 (windows NT 8.1; \
+win32; x32; rv:65.0) Gecko/20100101 Firefox/65.0")
+html.get_image)
+```
