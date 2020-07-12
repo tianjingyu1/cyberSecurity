@@ -170,3 +170,28 @@ OOP object oriented programming
 
 属性 方法
 
+# 爬虫
+
+1. 如何使用python获取到网页的html代码
+```
+import urllib.request
+
+class GetHtml(object):
+    def __init__(self.URL,HEAD):
+        self.url = URL
+        self.head = HEAD
+    def get_index(self):
+        self.response = urllib.request.urlopen(self.url)
+        self.request.add_header("user-agent",self.head)
+        self.response = urllib.request.urlopen(self.request)
+        return self.response.read()
+
+html = GetHtml("html://10.10.10.209","Mozila/5.0 (windows NT 8.1; \
+win32; x32; rv:65.0) Gecko/20100101 Firefox/65.0")
+print(html.get_index())
+```
+f12
+User-Agent
+
+2. 过滤图片地址
+
