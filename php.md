@@ -313,3 +313,34 @@ http://localhost/PHP/array/get.php?name=AJEST
 $_POST   HTTP请求报文的请求正文中
 
 move_uploaded_file(); 移动上传文件
+
+# 会话控制
+
+浏览网页的时候，使用的是HTTP协议
+
+客户端发出请求 
+服务端给出响应
+
+# COOKIE
+  COOKIE是存储在客户端的一段文本，文件|字符串
+  服务器发给客户端的
+  每次客户端浏览器 在发出请求时，都会携带cookie信息
+
+  cookie性质
+    name          cookie的名称
+    value         cookie的值
+    expire        过期时间
+    path          cookie的有效路径
+    domain        cookie的域名
+    secure        https
+    httponly      仅仅通过http协议访问 不能通过js访问
+  
+  设置cookie的语句
+  setcookie();
+
+  浏览器cookie信息 f12 存储
+  
+  接收cookie信息
+  $_COOKIE
+
+  
