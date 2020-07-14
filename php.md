@@ -289,3 +289,18 @@ unset()
   二维数组
     
   多维数组
+
+  预定义超全局数组变量
+    PHP定义好的，可以直接使用
+    函数内部或者外部都能使用
+
+  名称                     作用
+  $GLOBALS                 引用全局作用域中可用的全局变量
+  $_SERVER                 一个包含了诸如头信息(header)、路径)(path)、以及脚本位置(script locations)等等信息的数组
+  $_GET                    通过URL参数传递给当前脚本的变量的数组
+  $_POST                   当HTTP POST请求的Content-Type是application/x-www-form-urlencoded multipart/form-data时，会将变量以关联数组形式传入当前脚本
+  $_FILES                  通过HTTP POST方式上传到当前脚本的项目的数组
+  $_COOKIE                 通过HTTP Cookies方式传递给当前脚本的变量的数组
+  $_SESSION                当前脚本可用SESSION变量的数组
+  $_REQUEST                默认情况下包含了$_GET,$_POST和$_COOKIE的数组
+  $_ENV                    通过环境方式传递给当前脚本的变量的数组
