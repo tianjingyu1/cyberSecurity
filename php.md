@@ -304,3 +304,12 @@ unset()
   $_SESSION                当前脚本可用SESSION变量的数组
   $_REQUEST                默认情况下包含了$_GET,$_POST和$_COOKIE的数组
   $_ENV                    通过环境方式传递给当前脚本的变量的数组
+
+$_GET
+http://localhost/PHP/array/get.php?name=AJEST
+参数的名        键名
+参数的值        键值
+
+$_POST   HTTP请求报文的请求正文中
+
+move_uploaded_file(); 移动上传文件
