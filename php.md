@@ -353,4 +353,27 @@ move_uploaded_file(); 移动上传文件
   $_SESSION        //完成session数据的读写
   session_destory()  //注销session
 
-  
+  PHP与MySQL进行交互
+   mysqli
+   mysql 数据库的创建
+     登录phpadmin
+     数据库
+     表
+  php与mysql交互步骤
+    1. 建立连接
+    2. 执行SQL语句
+    3. 断开连接
+
+  相关函数
+    mysqli_connect();
+    mysqli_connect_error();  错误信息捕获
+    mysqli_close();
+    mysqli_query();
+    mysqli_fetch_row()       以索引数组的方式获取一条记录的数据
+    mysqli_fetch_assoc()     以关联数组的方式获取一条记录的数据
+    mysqli_fetch_array()     以索引数组或关联数组的方式获取一条记录的数据
+    mysqli_fetch_all()       以索引数组或关联数组的方式获取全部记录的数据
+    mysqli_num_rows()        获取结果行中的数量
+    mysqli_free_result()     释放与一个结果集合相关的内存
+
+    
