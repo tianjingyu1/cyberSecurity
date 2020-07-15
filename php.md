@@ -376,4 +376,13 @@ move_uploaded_file(); 移动上传文件
     mysqli_num_rows()        获取结果行中的数量
     mysqli_free_result()     释放与一个结果集合相关的内存
 
+  # 简单的留言板
+    留言
+    个人中心
+      登录
+      注册
+      注销
+    论坛币
+      互相转账
+
     
