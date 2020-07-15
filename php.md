@@ -343,4 +343,14 @@ move_uploaded_file(); 移动上传文件
   接收cookie信息
   $_COOKIE
 
+  COOKIE安全风险
+    窃取与欺骗
+
+  session机制（服务器端）
+    依赖cookie实现（浏览器端）
+    session id
+  session_start(); //开启session机制
+  $_SESSION        //完成session数据的读写
+  session_destory()  //注销session
+
   
