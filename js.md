@@ -45,8 +45,31 @@ JS的运行环境是浏览器
     while
     do while
     
+    函数
+    定义函数的好处  方便调用
+    定义函数        function
+    调用函数        abs(-1);
+
     对象
-     
-  
+    通过对象操作浏览器
+    浏览器内置对象
+      window 全局  代表浏览器
+      navigathor
+      location 
+      document   比较重要
+      document.cookie
+                 可以完成cookie信息的读写
+```
+alert(document.cookie);
+document.cookie="name=HELLO"
+```
+
+事件
+  用户触发事件
+    鼠标事件
+      onclick
+    键盘事件
+    form事件
+  事件响应
 
 DOM 文档对象模型
