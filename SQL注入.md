@@ -82,4 +82,14 @@ length()           返回字符串的长度
 substring()        截取字符串
 substr()
 mid()
+                   1. 截取的字符串
+                   2. 截取起始位置，从1开始计数
+                   3. 截取长度
+
 left()             从左侧开始取指定字符个数的字符串
+concat()           没有分隔符的连接字符串
+concat_ws()        含有分隔符的连接字符串
+group_concat()     连接一个组的字符串
+
+ord()              返回ASCLL码
+ascii()            
