@@ -257,3 +257,31 @@ post注入
 
 宽字节注入准确来说不是注入手法，而是另外一种比较特殊的情况。
 sqli-lab 32
+GBK编码范围 8140-FEFE（16进制）
+
+转义字符[\]的编码是5C，正好是GBK编码范围之内，也就是说我们可以在单引号之前提交一个十六进制编码的字符，与5C组成一个GBK编码的汉字。这样SQL语句传入数据库的时候，转义字符5C，会被当作GBK汉字的低位字节编码，从而失去转义的作用。
+
+0Xdf5c  就是一个汉字
+
+### Cookie注入
+
+sqli-lab 20
+
+Cookie注入的注入参数需要通过Cookie提交，可以通过[document.cookie]在控制台完成对浏览器Cookie的读写。
+
+### base64 注入
+
+sqli-lab 22
+
+base64 注入是比较简单的，只不过将注入字段经过base64编码。
+
+### HTTP头部注入
+
+User-Agent注入
+sqli-lab 18
+
+HTTP头部注入就是指注入字段在HTTP头部的字段中，这些字段通常有User-Agent、Referer等
+
+Referer注入
+sqli-lab 19
+
