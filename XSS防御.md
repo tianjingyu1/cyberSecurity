@@ -40,7 +40,26 @@ beef的启动
        beef-xss
        /usr/share/beef-xss/beef
   修改默认用户名和密码
+  web 界面管理控制台
+    http://172.16.132.128:3000/ui/panel
+
+  Shellcode
+    http://172.16.132.128:3000/hook.js
   
+  测试页面
+    http://172.16.132.128:3000/demos/butcher/index.html
 
+  1. 浏览器劫持
+  2. Cookie窃取欺骗  固定会话攻击
+    data:cookie=username=admin;userid=1
+```
+document.cookie="username=admin";
+document.cookie="userid=1";
+```
+  3. 利用浏览器漏洞getshell
+  msf
+  ms10002  xp
+  ms12063  win7
 
-1. 浏览器劫持
+  4. XSS平台
+    XSS盲打
