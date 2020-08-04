@@ -257,4 +257,6 @@ header('Access-Control-Allow-Headers:Origin,X-Requested-With,Content-Type, Accep
 
 我们可以把Shellcode存储在客户端的本地域中，比如HTTP Cookie、Flash共享对象、UserData、localStorage等。
 
+# 自动化XSS
 
+BeEF
