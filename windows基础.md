@@ -114,3 +114,152 @@ net share 查看本地开启的共享
 ney share ipc$ 开启ipc$共享
 net share ipc$ /del 删除ipc$共享
 net share c$ /del 删除C;共享
+netstat -a 查看开启了哪写端口，常用netstat -an
+netstat -n 查看端口的网络连接情况，常用netstat -an
+netstat -v 查看正在进行的工作
+at id号 开启已注册的某个计划任务
+at /delete 停止所有计划任务，用参数/yes则不需要确认就直接停止
+at id号 /delete 停止某个已注册的计划任务
+at 查看所有的计划任务
+attrib 文件名（目录名） 查看某文件（目录）的属性
+attrib 文件名 -A -R -S -H 或 +A +R +S +H去掉（添加）某文件的存档，只读，系统，隐藏属性；用+则是添加为某属性
+
+## 批处理文件
+
+批处理文件是dos命令的组合文件，写在批处理文件的命令会被逐一执行
+后缀名为.bat
+
+新建批处理文件
+新建一个文本文档保存时把后缀名改为bat
+也可以用命令
+copy con 123.bat
+net user crecer 123123 /add
+net localgroup administrator cracer /add
+Ctrl+z
+回车
+
+## windows快捷键的使用
+
+F1      显示当前程序或者windows的帮助内容
+F2      当你选中一个文件的话，这意味着“重命名”
+F3      当你在桌面上的时候是打开“查找：所有文件”对话框
+Ctrl+F4  关闭当前应用程序中的当前文本（如word中）
+F5      刷新
+Ctrl+F5  强行刷新
+Ctrl+F6  切换到当前应用程序中的下一个文本（加shift可以跳到前一个窗口）
+F10或ALT  激活到当前程序的菜单栏
+windows键或Ctrl+ESC  打开开始菜单
+Ctrl+ALT+DELETE  在win9x中打开关闭程序对话框
+DELETE  删除被选择的选择项目，如果是文件，将被放入回收站
+SHIFT+DELETE  删除被选择的选择项目，如果是文件，将被直接删除而不是放入回收站
+Ctrl+N   新建一个新的文件
+Ctrl+O   打开“打开文件”对话框
+Ctrl+P   打开“打印”对话框
+Ctrl+S   保存当前操作的文件
+Ctrl+X   剪切被选择的项目到剪切板
+Ctrl+insert 或Ctrl+C  复制被选择的项目到剪切板
+shift+insert 或 Ctrl+V   粘贴剪切板中的内容
+ALT+BACKSPACE 或Ctrl+Z   撤销上一步的操作
+ALT+SHIFT+BACKSPACE   重做上一步被撤销的操作
+windows+M    最小化所有被打开的窗口
+windows+Ctrl+M   重新将恢复上一项操作前窗口的大小和位置
+windows+E   打开资源管理器
+windows+F   打开“查找：所有文件”对话框
+windows+R   打开“运行”对话框
+windows+BREAK 打开“系统属性”对话框
+windows+Ctrl+F   打开“查找：计算机”对话框
+shift+F10或鼠标右击 打开当前活动项目的快捷菜单
+shift   在放入CD的时候按下不放，可以跳过自动播放CD。在打开word的时候按下不放，可以跳过自启动的宏
+ALT+F4   关闭当前应用程序
+ALT+SPACEBAR  打开程序最左上角的菜单
+ALT+TAB   切换当前程序
+ALT+ESC   切换当前程序
+ALT+ENTER   将windows下运行的MSDOS窗口在窗口和全屏幕状态间切换
+PRINT SCREEN   将当前屏幕以图象方式拷贝到剪切板
+ALT+PRINT SCREEN   将当前活动程序窗口以图象方式拷贝到剪贴板
+在IE中：
+ALT+PRINT ARROW   显示前一页（前进键）
+ALT+LEFT ARROW  显示后一页（后退键）
+Ctrl+TAB   在页面上的各框架中切换（加shift反向）
+
+### 执行菜单上相应的命令 ALT+菜单上带有下划线的字母
+关闭多文档界面程序中的当前窗口 Ctrl+ F4
+关闭当前窗口或退出程序  ALT+F4
+复制 Ctrl+ C
+剪切 Ctrl+ X
+粘贴 Ctrl+ V
+删除 DELETE
+### 在任务栏上的按扭间循环windows+TAB
+显示“查找：所有文件”windows+F
+显示“查找：计算机”Ctrl+windows+F
+显示“帮助” windows+F1
+显示“运行” 命令 windows +R
+显示“开始”菜单 windows
+显示“系统属性”对话框 windows+break
+显示“windows资源管理器” windows+E
+最小化或还原所有窗口 windows+D
+撤销最小化所有窗口 shift+windows+M
+### 使用对话框中的快捷键
+目的快捷键
+取消当前任务 esc
+在选项上向后移动 shift+tab
+在选项卡上向后移动 ctrl+shift+tab
+在选项上向前移动tab
+在选项卡上向前移动 ctrl+tab
+
+## 系统优化
+
+### 修改启动项
+
+windows+r菜单在搜索框中输入“msconfig”命令打开系统配置窗口后找到“启动”选项
+
+### 加快系统启动速度
+
+windows+r菜单在搜索程序框中输入msconfig命令，打开系统配置窗口后找到“引导”选项（英文系统是Boot）
+点击“高级选项”此时可以看到我们将要修改的设置项了
+
+### 提高窗口切换提速
+
+右击计算机属性--性能信息和工具--调整视觉效果
+先点击让windows选择计算机的最佳设置--再点击自定义--把最后的勾选去掉--确定
+
+### 使用工具优化
+
+360安全卫士
+魔方注册表清理工具
+鲁大师
+系统优化大师
+
+## 登录密码破解
+
+### 使用启动U盘破解
+
+下载“电脑店U盘启动制作工具”
+安装
+备份U盘工具
+再制作U盘启动过程中会删除U盘上所有数据，且不可恢复，故此需备份U盘数据
+破解密码
+
+### 使用工具对hash值破解
+
+lc5
+
+## 手动清除木马
+
+### 查找开机启动项
+
+通过msconfig查找启动项 开始 程序 启动
+
+### 查询服务
+
+service.msc打开
+
+### 查看网络端口连接
+
+netstat -anp
+
+常见木马端口 4444 8888 9527
+
+## 配置黑客桌面
+
+雨滴桌面
