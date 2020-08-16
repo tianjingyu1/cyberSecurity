@@ -67,3 +67,24 @@ Options具有的功能：代理监听设置、截断客户端请求、截断服�
 
 通过杂项设置对应的请求头等信息
 
+# 通过BurpSuite截取WebApp流量
+
+## WebAPP介绍
+
+目前WebApp（手机APP）的通信仍然使用HTTP协议进行对应的通信。可以通过Burp设置代理，然后手机设置网络代理，通过Burp截断手机APP流量
+
+### 手机网络设置
+
+在手机网络设置中，填写对应的代理
+
+# 通过BurpSuite剔除JavaScript脚本，实现JS绕过
+
+## JavaScript脚本介绍
+
+JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的类型，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。
+如：对于上传文件进行JS验证
+
+## Burpsuite截断响应Javascript脚本
+
+在Proxy模块中的Option下Response Modification,可以勾选Remove all JavaScript
+
