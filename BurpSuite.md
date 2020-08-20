@@ -177,3 +177,18 @@ issue definitions 查看支持得漏洞扫描
 
 利用Burpsuite Intruder模块进行暴力破解
 
+## 目录扫描
+
+利用Burpsuite Intruder模块进行不断枚举，然后对响应码进行筛选，从而得出站点目录下哪些文件存在
+
+## Burpsuite Intruder模块 Position介绍
+
+针对HTTP某个位置或某几个位置进行模糊测试，需要选择不同的位置与Attack Type
+
+Attack Type:
+
+1. Snipper 狙击枪模式，只针对一个位置进行探测
+2. Battering ram 攻城锤模式，针对多个位置使用一个Payload
+3. Pitchfork 单叉模式，针对多个位置使用不同的多个Payload
+4. Cluster Bomb 集束炸弹模式，针对多个位置，全部组合
+
