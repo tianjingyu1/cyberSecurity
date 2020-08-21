@@ -192,3 +192,42 @@ Attack Type:
 3. Pitchfork 单叉模式，针对多个位置使用不同的多个Payload
 4. Cluster Bomb 集束炸弹模式，针对多个位置，全部组合
 
+## Burpsuite Intruder Option选项中Request设置
+
+设置Request请求内容，以及设置Request引擎
+
+## Burpsuite Intruder Option选项中Attack Result设置
+
+针对结果进行设置，存储请求或结果等
+
+## Burpsuite Intruder Option选项中Grep -Match设置
+
+标出符合特定表达式的结果
+
+## Burpsuite Intruder Option选项中Grep - Exact设置
+
+从结果中榨取有用信息
+
+## Burpsuite Intruder Option选项中Reflection设置
+
+# Burpsuite Repeater介绍
+
+Burp Repeater作为Burp Suite中一款手工验证HTTP消息的测试工具，通常用于多次重放请求响应和手工修改请求消息的修改后对服务器端响应的消息分析
+
+## Burpsuite Repeater设置
+
+# Burpsuite Sequencer介绍
+
+Burp Sequencer作为Burp Suite中一款用于检测数据样本随机性质量的工具，通常用于检测访问令牌是否可预测、密码重置令牌是否可预测等场景，通过Sequencer的数据样本分析，能很好地降低这些关键数据被伪造的风险
+
+# Burpsuite Decoder模块介绍
+
+Decoder用于对字符串进行加密操作
+
+# Burpsuite Comparer模块介绍
+
+针对两个不同的HTTP请求进行比较
+
+# Burpsuite 中的Exender中具有插件安装的选项，下载插件之后进行安装即可
+插件jason.jar下载链接：https://code.google.com/archive/p/gason/downloads
+
