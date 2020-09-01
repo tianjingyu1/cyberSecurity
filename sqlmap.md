@@ -46,7 +46,7 @@ dump    参数：下载数据
 --privileges  列出数据库管理员权限
 
 列举数据库系统的架构
-sqlmap.py =u "http://xx.com/int.php?id=1" --schema --batch --exclude-sysdbs
+sqlmap.py -u "http://xx.com/int.php?id=1" --schema --batch --exclude-sysdbs
 
 # 探测等级
 
