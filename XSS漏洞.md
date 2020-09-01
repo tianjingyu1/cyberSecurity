@@ -260,3 +260,161 @@ header('Access-Control-Allow-Headers:Origin,X-Requested-With,Content-Type, Accep
 # 自动化XSS
 
 BeEF
+
+# 认识xss
+
+xss(cross-site script)跨站脚本自1996年诞生以来，一直被OWASP(open web application security project)评为十大安全漏洞中的第二威胁漏洞。也有黑客把xss当做新型的“缓冲区溢出攻击”，而JavaScript是新型的shellcode
+
+2011年6月份，国内最火的信息发布平台“新浪微博”爆发了xss蠕虫攻击，仅持续16分钟，感染用户近33000个，危害十分严重
+xss最大的特点就是能注入恶意的代码到用户浏览器的网页上，从而达到劫持用户会话的目的
+
+# 什么是跨站脚本
+
+是一种经常出现在web应用程序中的计算机安全漏洞，是由于web应用程序对用户的输入过滤不严而产生的。攻击者利用网站漏洞把恶意的脚本代码注入到网页中，当其他用户浏览这些网页时，就会执行其中的恶意代码，对受害用户可能采用cookie资料窃取，会话劫持，钓鱼欺骗等攻击手段
+
+# xss的危害
+
+1 网络钓鱼。包括盗取各类的用户账号
+2 窃取用户cookie
+  窃取用户浏览会话
+  强制弹出广告页面、刷流量
+  网页挂马
+  提升用户权限，进一步渗透网站
+  传播跨站脚本蠕虫等
+
+# JavaScript简介
+
+JavaScript一种直译式语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能
+
+在1995年时，由Netscape公司的Brendan Eich，在网景导航者浏览器上首次设计实现而成。因为Netscape与Sun合作，Netscape管理层希望它外观看起来像Java，因此取名为JavaScript。但实际上它的语法风格与Self及Schema较为接近
+
+为了取得技术优势，微软推出了JScript，CEnvi推出了ScriptEase，与JavaScript同样可在浏览器上运行。为了统一规格，因为JavaScript兼容于ECMA标准，因此也成为ECMAScript
+
+## docunment对象
+
+document是一个对象，从JS一开始就存在的一个对象，它代表当前的页面（文档）
+我们调用它的write()方法就能够向该对象中写入内容
+
+即： document.write()
+可以在html引用外部js代码
+<script src=x.js></script>
+js代码中写入
+document.write("hello cracer");
+
+## JavaScipt变量
+
+## JavaScript流程控制
+
+if-else控制语句
+switch控制语句
+for循环
+while循环
+
+## javascipt函数
+
+function x(a,b){
+  var c=a+b;
+  return c;
+}
+
+## javascript事件
+
+onclick属性 点击事件
+function x(){
+  alert(/xss/)
+}
+<h1 onclick="x()">hello</h1>
+
+# XSS分类
+
+反射型XSS
+DOM型XSS
+存储型XSS
+
+## 反射型XSS
+
+反射型跨站脚本也称作非持久型、参数型跨站脚本、这类型的脚本是最常见的，也是使用最为广泛的一种，主要用于将恶意的脚本附加到URL地址的参数中
+例如
+http://www.cracer.com/search.php?key="><script>alert("xss")</script>
+
+一般使用的将构造好的URL发给受害者，是受害者点击触发，而且只执行一次，非持久化
+DOM型XSS
+
+## 存储型XSS
+
+存储型XSS比反射型跨站脚本更具有威胁性，并且可能影响到web服务器的自身安全
+
+此类xss不需要用户点击特定的URL就能执行跨站脚本，攻击者事先讲恶意JavaScript代码上传或存储到漏洞服务器中，只要受害者浏览包含此恶意的代码的页面就会执行恶意代码
+
+### 火狐中常用的XSS调试插件
+
+Hackbar
+Firebug
+Tamper Data
+Live HTTP Headers
+Editor Cookie
+
+### XSS漏洞挖掘
+
+挖掘方法：
+  手工挖掘
+  工具挖掘
+
+### 工具挖掘XSS漏洞
+
+awvs
+netsparke
+appscan
+burp
+xsser
+xsscrapy
+brutexssr
+OWASP Xenotix
+
+## 常见的防xss代码
+
+$x=preg_replace("/script/","",$x);
+$x=preg_replace("/script/i","",$x);
+$x=preg_replace("/alert/i","",$x);
+$x=preg_replace("/script/i","",$x);
+
+## XSS绕过限制
+
+相信大家在做渗透测试的时候都有过这样的经历，明明一个xss的漏洞，但是却有xss过滤规则或者WAF保护导致我们不能成功利用，比如我们输入<script>alert("hi")</script>，会被转换为<script>alert(>xss detected<)</script>,这样的话我们的xss就不生效了
+几种简单的绕过xss的方法：
+1. 绕过magic_quotes_gpc
+2. 编码                   复杂的关键字过滤
+3. 改变大小写              简单的关键字过滤
+4. 关闭标签
+
+<script>alert('xss')</script>
+
+### 绕过magic_quotes_gpc
+
+magic_quotes_gpc=ON是php中的安全设置，开启后会把一些特殊字符进行轮换，比如'(单引号)转换为\',"(双引号)转换为\",\转换为\\
+
+比如：<script>alert("xss");</script>会转换为<script>alert(\"xss\");</script>,这样我们的xss就不生效了
+
+针对开启了magic_quotes_gpc的网站，我们可以通过javascript中的String.fromCharCode方法来绕过，我们可以把alert("XSS");转换为String.fromCharCode(97,108,101,114,116,40,34,88,83,83,34,41)那么我们的XSS语句就变成了
+<script>String.fromCharCode(97,108,101,114,116,40,34,88,83,83,34,41,59)</script>
+String.fromCharCode(0是javascript中的字符串方法，用来把ASCII转换为字符串)
+
+### 编码 可以对语句进行hex编码来绕过XSS规则
+
+### 改变大小写
+
+在测试过程中，我们可以改变测试语句的大小写来绕过XSS规则
+
+### 闭合标签
+
+有时我们需要关闭标签来使我们的XSS生效
+
+### 解决限制字符（要求同页面）
+
+### COOKIE获取
+
+反射型XSS的cookie获取
+存储型XSS的cookie获取
+http-only启用时获取cookie
+编写接收cookie代码
+
