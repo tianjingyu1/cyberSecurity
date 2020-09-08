@@ -21,7 +21,7 @@ sqlmap.py --update
 
 # 基本参数
 
-sqlmao.py -h 查看帮助选项
+sqlmap.py -h 查看帮助选项
 is-dba  当前用户权限
 dbs     所有数据库
 current-db  网站当前数据库
