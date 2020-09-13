@@ -242,3 +242,96 @@ kali Linux前身是BackTrack(基于ubuntu)，是一个基于Debian的Linux发行
 kali Linux是基于Debian的Linux发行版，设计用于数字取证和渗透测试和黑客攻防。由Offensive Security Ltd维护和资助。最先由Offensive Security的Mati Aharoni和Devon Kearns通过重写BackTrack来完成，BackTrack是他们之前写的用于取证的Linux发行版。
 Kali Linux预装了许多渗透测试软件，包括nmap(端口扫描器)、Wireshark(数据包分析器)、John the Ripper(密码破解器)，以及Aircrack-ng(一套用于对无线局域网进行渗透测试的软件)，用户可通过硬盘、Live CD或live USB运行Kali Linux。Metasploit的Metasploit Framework支持Kali Linux，Metasploit一套针对远程主机进行开发和执行Exploit代码的工具
 
+## 敏感目录
+
+robots.txt文件
+whois查询
+DNS查询
+
+## 端口检测
+
+整站识别
+waf探测
+工具网站及Google hacker
+
+- nmap
+nmap -sF 192.168.1.1 过防火墙扫描
+nmap -sL 192.168.1.1 192.168.1.6 伪造自己真实ip改为1.1扫描
+nmap -O -PN 192.168.1.1/24 探测网络系统及不用ping探测，可过防火墙拦截
+
+### robots.txt
+
+获取网站隐藏敏感目录活文件 比如：安装目录，上传目录，编辑器目录，管理目录，管理页面等
+
+### whois搜集
+
+搜集注册人信息，电话，邮箱，姓名，地址，等相关有用的敏感信息 常用工具：whois和站长工具
+
+### DNS搜集
+
+搜集网站域名信息，如子域名，其他域名，解析服务器，区域传送漏洞等
+常用工具：dnsenum、dig、fierce
+
+- dnsenum可以通过字典或者谷歌猜测可能存在的域名，并对一个网段进行反查
+
+dnsenum --enum cracer.com 获取其他域名
+-r 允许用户设置递归查询
+-w 允许用户设置whois请求
+-o 允许用户指定输入文件位置
+
+- fierce工具主要是对子域名进行扫描和收集信息的。使用fierce工具获取一个目标主机上所有ip地址和主机信息。还可以测试区域传送漏洞
+
+fierce -dns baidu.com 获取其他域名
+--wordlist 指定字典
+fierce -dns ns9.baidu.com --wordlist host.txt /tmp/12.txt
+
+- dig工具也是一款比较流行的dns侦查工具
+
+dig www.cracer.com 查询dns
+dig -t ns cracer.com 找解析域名的授权dns
+dig axfr@ns1.dns.net cracer.com
+
+## 目录扫描
+
+### 暴力破解
+### 目录爬行
+目录爬行原理是通过一些自带网络蜘蛛爬行的工具对网站链接进行快速爬行
+
+暴力破解的方法就是需要一个强大的目录名称字典，用来尝试逐个匹配，如果存在通过响应码的回显来确定目录或者页面是否存在
+
+- dirb工具是一款非常好用的目录暴力破解工具，自带强大字典
+
+dirb http://www.cracer.com
+dirb https://www.cracer.com
+dirb http://www.cracer.com /usr/wordlist.txt
+
+- FOCA网站元素搜集工具，一款不错的利器，可以在渗透测试中搜集下网站工具中一些敏感文件，用法简单实用
+
+- dirbuster工具是一款非常好用的目录暴力猜解工具，自带强大字典
+图形界面
+输入httos://www.cracer.com
+配置字典
+
+## cms识别
+
+- whatweb 用来识别网站cms及平台环境的工具
+
+whatweb http://www.cracer.com
+whatweb -v https://www.cracer.com
+
+# 工具网站
+
+searchdns.netcraft.com netcraft.com
+站长工具 http://tool.chinaz.com/
+http://www.aizhan.com/ 爱站网
+Google hacker 谷歌搜索
+...
+
+- waf识别
+
+wafw00f
+用来识别网站waf的一款工具
+wafw00f http://www.cracer.com
+
+shodan.io  主要搜设备
+
