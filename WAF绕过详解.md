@@ -112,3 +112,43 @@ a%nd
 变换提交方式
 将get改成post或者cookie提交
 
+### sqlmap tamper利用
+
+Symboliclogical.py
+space2mssqlhash.py
+appendnullbyte.py
+
+利用修改tamper绕过waf
+
+### 实战编写过waf一句话
+
+编写过狗一句话思路：
+利用可变变量
+$a=b
+$b=c
+$$a=c
+利用函数
+利用判断语句
+利用编码
+
+### 突破waf拦截菜刀连接
+
+可以使用最新版菜刀
+中国蚁剑客户端
+可以使用过狗菜刀+中转脚本
+
+### 上传绕过waf
+
+上传突破禁止上传php我呢见
+第一：文件包含
+第二：双文件上传突破限制
+第三：修改上传参数
+
+### 提权过waf
+
+通过程序读密码
+利用waf绕过神器
+利用exp读hash
+将用户添加到远程桌面组，并且给目录降权
+利用第三方软件提权
+system 把安全狗服务停止，重启服务器
