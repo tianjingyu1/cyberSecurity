@@ -235,3 +235,10 @@ cat 文件名 wc -l 计算行数
 diff 文本1的名字 文本2的名字 比较文本的差异
 split -l 要分割成多少的个数 被分割的文本的名字
 
+# kali
+
+kali Linux前身是BackTrack(基于ubuntu)，是一个基于Debian的Linux发行版，包含很多安全和取证的相关工具。支持ARM架构
+
+kali Linux是基于Debian的Linux发行版，设计用于数字取证和渗透测试和黑客攻防。由Offensive Security Ltd维护和资助。最先由Offensive Security的Mati Aharoni和Devon Kearns通过重写BackTrack来完成，BackTrack是他们之前写的用于取证的Linux发行版。
+Kali Linux预装了许多渗透测试软件，包括nmap(端口扫描器)、Wireshark(数据包分析器)、John the Ripper(密码破解器)，以及Aircrack-ng(一套用于对无线局域网进行渗透测试的软件)，用户可通过硬盘、Live CD或live USB运行Kali Linux。Metasploit的Metasploit Framework支持Kali Linux，Metasploit一套针对远程主机进行开发和执行Exploit代码的工具
+
