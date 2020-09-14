@@ -335,3 +335,98 @@ wafw00f http://www.cracer.com
 
 shodan.io  主要搜设备
 
+# 综合扫描
+
+- DMitry(Deepmagic Information Gathering Tool)是一个一体化的信息收集工具。它可以用来收集以下信息：
+1.端口扫描
+2.whois主机IP和域名信息
+3.从Netcraft.com获取主机信息
+4.子域名
+5.域名中包含的邮件地址
+尽管这些信息可以在kali中通过多种工具获取，但是使用DMitry可以将收集的信息保存在一个文件中，方便查看
+
+dmitry -wnpb cracer.com
+dmitry -winse cracer.com 扫描网站注册信息
+dmitry -p cracer.com -f -b 查看主机开放端口
+
+- REcon-ng
+与MSF的使用方法非常类似，插播一下msf使用基础流程
+第一步，search name模块
+第二步：use name模块
+第三步：info 查看模块信息
+第四步：show payloads 查看该模块可以使用的攻击载荷(为scanner的时候不需要)
+第五步：set payload 载荷
+第六步：show targets 查看该攻击载荷使用的系统类型(为scanner的时候不需要)
+第七步：set targets num 设置目标的系统类型
+
+启动命令recon-ng
+
+# 服务器漏洞扫描
+
+针对于web服务器的各种漏洞扫描工具的使用展开学习
+
+- webshag
+
+webshag是一个用于对web服务器进行安全审计的跨平台多线程攻击
+
+功能：端口扫描、URL扫描和文件模糊测试
+他可以凭借IDS规避能力，使请求之间的相关性变得更复杂
+
+- skipfish
+
+shipfish是一款web应用安全侦查工具。skipfish会利用递归去重和基于字典的探针生成一副交互式网站地图。最终生成的地图绘制通过安全检测后输出
+
+使用方法：
+skipfish -o(输出位置) -w/-s (字典文件位置) (目标网站)
+扫描结束后查看输出文件即可
+
+- vega
+
+vega是一个安全测试工具，用来爬起一个网站，并分析页面内容来找到链接和表单参数
+
+- w3af
+
+w3af是web application attack and audit framework(web应用攻击和安全审计框架)的缩写
+它是一个开源的web应用安全扫描器和漏洞利用工具
+
+两种使用方式：
+一种图形界面
+二种是命令行
+
+- nikto
+
+nikto是一款开放源代码的、功能强大的web扫描评估软件，能对web服务器多种安全项目进行测试的扫描软件，去寻找已知有名的漏洞，能在230多种服务器上扫描出2600多种有潜在危险的文件、CGI及其他问题，它可以扫描指定主机的web类型、主机名、特定目录、COOKIE、特定CGI漏洞、返回主机允许的http模式等等。他也使用LibWhiske库，但通常比Whisker更新的更为频繁。Nikto是网管安全人员必备的web审计工具之一
+
+-h 指定扫描的目标-p 端口
+nikto -h www.xiaojin.org -T 9
+nikto -h www.xiaojin.org -p 80,8080,8081
+-o 指定输入结果
+-C 指定CGI目录 -all表示猜解CGI目录
+nikto -h www.xiaojin.org -o result.txt
+nikto -h www.xiaojin.org -C all
+-T 选项包含很多小选项 -T 9 表示扫描SQL注入漏洞
+
+- wfuzz
+
+是一款用来进行web应用暴力猜解的工具，支持对网站目录、登录信息、应用资源文件等暴力猜解，还可以进行get及post参数的猜解，sql注入、xss漏洞的测试等，该工具所有功能都依赖于字典文件
+
+用法：
+猜解www.cracer.com/目录下有哪些页面和目录，通过加载字典文件进行猜解，并且排除404页面，将结果以整齐的格式保存放到0k.html
+wfuzz -c -z file,字典文件(pass) --hc 404 -o html
+www.cracer.com/FUZZ 2>0k.html
+
+猜解登录表单的密码：
+wfuzz -c -z file,字典 -d "login=admin&pwd=FUZZ" --hc 404 http://www.cracer.com/admin/index.php
+
+- websploit
+
+websploit是一个用来扫描和分析远程系统以找到漏洞的开源项目
+
+使用方法：
+websploit
+show modules
+use xxx/xx
+show options
+set http://123..
+run
+
