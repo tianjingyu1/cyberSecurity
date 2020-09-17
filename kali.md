@@ -432,3 +432,14 @@ run
 
 pmd phpadmin
 
+- msf
+
+运行msfconsole即可打开msf命令控制接口
+
+### 抓包
+
+- ettercap
+
+### 社会工程学
+
+setoolkit
